@@ -1,0 +1,11 @@
+
+
+.screen {
+    border: 1px solid gray;
+    border-radius: 5px;   
+    color: white;
+    padding: 20px;
+    font-size: 30px;
+    background-color: lightslategray;
+    min-height: 40px;
+}
