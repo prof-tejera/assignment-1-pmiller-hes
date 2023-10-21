@@ -2,9 +2,7 @@ import "./Screen.css";
 
 const Screen = ({ value }) => {
   return (
-    <div
-      className="screen"
-    >
+    <div className="screen" >
       {value}
     </div>
   );
