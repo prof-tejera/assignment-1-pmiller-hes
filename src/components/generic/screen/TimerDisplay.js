@@ -1,6 +1,6 @@
 import Screen from './Screen';
 
-const TimerDisplay = ({ seconds, extendedDisplay = ''}) => {
+const TimerDisplay = ({ seconds, extendedDisplay = '', style = ''}) => {
  
   const formatTimeSegment = (num) => num.toString().padStart(2, '0');
 
@@ -18,7 +18,7 @@ const TimerDisplay = ({ seconds, extendedDisplay = ''}) => {
 
 
   return (
-    <Screen value={`${formatTimeSegment(getHours(seconds))}:${formatTimeSegment(getMinutes(seconds))}:${formatTimeSegment(getSeconds(seconds))}${extendedDisplay}`}></Screen>
+    <Screen value={`${formatTimeSegment(getHours(seconds))}:${formatTimeSegment(getMinutes(seconds))}:${formatTimeSegment(getSeconds(seconds))}${extendedDisplay}`} style={style}></Screen>
   );
 
 

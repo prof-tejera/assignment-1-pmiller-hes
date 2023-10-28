@@ -1,8 +1,8 @@
 import "./Screen.css";
 
-const Screen = ({ value }) => {
+const Screen = ({ value, style ='' }) => {
   return (
-    <div className="screen" >
+    <div className={'screen '+ style} >
       {value}
     </div>
   );

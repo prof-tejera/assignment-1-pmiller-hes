@@ -2,12 +2,13 @@ import Panel from "../generic/Panel/Panel";
 import Timer from "../generic/Timer";
 import Input from "../generic/Input/Input";
 import { useRef, useState } from "react";
-import IterativeTimerDisplay from "../generic/screen/IterativeTimerDisplay";
+import TabataTimerDisplay from "../generic/screen/TabataTimerDisplay";
 import TimerButtons from "../generic/TimerButtons";
 
 const Tabata = () => {
     const [duration, setDuration] = useState(0);
     const [iterations, setIterations] = useState(0);
+    const [state, setState] = useState('on');
     const iterationState = useRef(0);
     const onOffState = useRef('on');
     const onSeconds = useRef(0);
@@ -16,9 +17,11 @@ const Tabata = () => {
     const OnTimerElapse = () => {       
         if (onOffState.current === 'on') {
             onOffState.current = 'off';
+            setState("off");
         } else {
             iterationState.current = iterationState.current -1;
            onOffState.current = 'on';
+           setState("on");
         }
     
         if (iterationState.current > 0) {
@@ -26,6 +29,7 @@ const Tabata = () => {
         } else {
             setDuration(0);
             setIterations(0);
+            
             Stop();
         }
     };
@@ -55,7 +59,7 @@ const Tabata = () => {
     const { Update, Start, Stop, Reset } = Timer(OnUpdated, OnReset, OnTimerElapse, OnTick, onSeconds.current, -1, -1);
 
     return <Panel>
-        <IterativeTimerDisplay seconds={duration} iteration={iterations}></IterativeTimerDisplay>
+        <TabataTimerDisplay seconds={duration} iteration={iterations} state={state}></TabataTimerDisplay>
         <TimerButtons Start={Start} Stop={Stop} Reset={Reset} FastForward={FastForward} />
         <Panel>
             <h3>Time On</h3>
