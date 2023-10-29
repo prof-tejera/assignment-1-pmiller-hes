@@ -22,6 +22,7 @@ const Stopwatch = () => {
     };  
     const OnReset = (seconds, iteration) => {
         setDuration(seconds);
+        Stop();
     };
     const FastForward = () => {
         Reset(seconds.current, null);

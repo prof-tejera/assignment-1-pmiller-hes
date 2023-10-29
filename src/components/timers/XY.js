@@ -39,6 +39,7 @@ const XY = () => {
     const OnReset = (seconds, iteration) => {
         setDuration(seconds);
         setIterations(iteration);
+        Stop();
     };
     const FastForward = () => {
         Reset(0,0);

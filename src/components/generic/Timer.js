@@ -17,7 +17,11 @@ const Timer = (onUpdated, onReset, onTimerElapse, onTick, startSeconds, endSecon
         _timer.current = setInterval(() => {
             _seconds.current = _seconds.current + _tick;
             onTick(_seconds.current);
-            if (_seconds.current === _endSeconds)
+            if (_tick > 0 &&_seconds.current >= _endSeconds)
+            {
+                onTimerElapse();
+            }
+            else if (_tick < 0 &&_seconds.current <= _endSeconds)
             {
                 onTimerElapse();
             }

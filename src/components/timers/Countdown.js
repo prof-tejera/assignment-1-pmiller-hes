@@ -21,6 +21,7 @@ const Countdown = () => {
     };
     const OnReset = (seconds, iteration) => {
         setDuration(seconds);
+        Stop();
     };
     const FastForward = () => {
         Reset(0, null);
