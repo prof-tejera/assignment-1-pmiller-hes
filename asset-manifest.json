@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/assignment-1-pmiller-hes/static/css/main.c4759a5a.css",
+    "main.js": "/assignment-1-pmiller-hes/static/js/main.cb94134b.js",
+    "index.html": "/assignment-1-pmiller-hes/index.html",
+    "main.c4759a5a.css.map": "/assignment-1-pmiller-hes/static/css/main.c4759a5a.css.map",
+    "main.cb94134b.js.map": "/assignment-1-pmiller-hes/static/js/main.cb94134b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c4759a5a.css",
+    "static/js/main.cb94134b.js"
+  ]
+}
