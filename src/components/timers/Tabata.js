@@ -31,6 +31,7 @@ const Tabata = () => {
             setIterations(0);
             
             Stop();
+            setState("complete");
         }
     };
     const OnTick = (secondsRemaining) => {
@@ -47,6 +48,7 @@ const Tabata = () => {
         }
         iterationState.current = updatedIteration;
         setIterations(updatedIteration);
+        setState("on");
     };
     const OnReset = (seconds, iteration, isStopped) => {
         setDuration(seconds);
@@ -63,6 +65,7 @@ const Tabata = () => {
     const FastForward = () => {
         Reset(0, 0);
         Stop();
+        setState("on");
     };
     const { Update, Start, Stop, Reset } = Timer(OnUpdated, OnReset, OnTimerElapse, OnTick, onSeconds.current, -1, -1);
 

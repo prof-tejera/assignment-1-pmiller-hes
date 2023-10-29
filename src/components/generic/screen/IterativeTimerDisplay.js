@@ -1,11 +1,11 @@
 import TimerDisplay from './TimerDisplay';
 
-const IterativeTimerDisplay = ({ seconds, iteration, style }) => {
+const IterativeTimerDisplay = ({ seconds, iteration, state }) => {
  
   const formatIteration = (iterations) => { return ` x ${iterations}`;}
 
   return (
-    <TimerDisplay seconds={seconds} extendedDisplay={formatIteration(iteration)} style={style}></TimerDisplay>
+    <TimerDisplay seconds={seconds} extendedDisplay={formatIteration(iteration)} state={state}></TimerDisplay>
   );
 
   

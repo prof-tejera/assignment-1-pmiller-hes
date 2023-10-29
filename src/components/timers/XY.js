@@ -8,6 +8,7 @@ import TimerButtons from "../generic/TimerButtons";
 const XY = () => {
     const [duration, setDuration] = useState(0);
     const [iterations, setIterations] = useState(0);
+    const [state, setState] = useState(null);
     const iterationState = useRef(0);
     const seconds = useRef(0);
 
@@ -21,6 +22,7 @@ const XY = () => {
             setDuration(0);
             setIterations(0);
             Stop();
+            setState("complete");
         }
 
     };
@@ -34,22 +36,27 @@ const XY = () => {
 
         iterationState.current = updatedIteration;
         setIterations(updatedIteration);
+        setState(null);
     };
     const OnReset = (seconds, iteration, isStopped) => {
         setDuration(seconds);
         setIterations(iteration);
         iterationState.current = iteration;
-        
-        if (isStopped) Stop();
+
+        if (isStopped) {
+            Stop();
+            setState(null);
+        }
     };
     const FastForward = () => {
         Reset(0,0);
         Stop();
+        setState(null);
     };
     const { Update, Start, Stop, Reset } = Timer(OnUpdated, OnReset, OnTimerElapse, OnTick, seconds.current, -1, -1); 
 
     return <Panel>
-        <IterativeTimerDisplay seconds={duration} iteration={iterations}></IterativeTimerDisplay>
+        <IterativeTimerDisplay seconds={duration} iteration={iterations} state={state}></IterativeTimerDisplay>
         <TimerButtons Start={Start} Stop={Stop} Reset={Reset} FastForward={FastForward} />
         <Panel>
             <Input text="Duration" type="number" max="59" min="0" onChange={(e) => {Update(null, e.target.value, null, null, null)}} placeHolder="Duration (hour)"></Input>
