@@ -25,7 +25,7 @@ const Tabata = () => {
         }
     
         if (iterationState.current > 0) {
-            Reset(onOffState.current === 'off' ? offSeconds.current : onSeconds.current, iterationState.current);
+            Reset(onOffState.current === 'off' ? offSeconds.current : onSeconds.current, iterationState.current, false);
         } else {
             setDuration(0);
             setIterations(0);
@@ -48,10 +48,17 @@ const Tabata = () => {
         iterationState.current = updatedIteration;
         setIterations(updatedIteration);
     };
-    const OnReset = (seconds, iteration) => {
+    const OnReset = (seconds, iteration, isStopped) => {
         setDuration(seconds);
         setIterations(iteration);
-        Stop();
+       
+
+        if (isStopped){
+            iterationState.current = iteration;
+            setState("on");
+            Stop();
+        }    
+   
     };
     const FastForward = () => {
         Reset(0, 0);

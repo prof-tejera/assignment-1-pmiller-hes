@@ -14,9 +14,8 @@ const XY = () => {
     const OnTimerElapse = () => {
         iterationState.current = iterationState.current -1;
         
-
         if (iterationState.current > 0){
-            Reset(null, iterationState.current);
+            Reset(null, iterationState.current, false);
         }
         else{
             setDuration(0);
@@ -36,10 +35,12 @@ const XY = () => {
         iterationState.current = updatedIteration;
         setIterations(updatedIteration);
     };
-    const OnReset = (seconds, iteration) => {
+    const OnReset = (seconds, iteration, isStopped) => {
         setDuration(seconds);
         setIterations(iteration);
-        Stop();
+        iterationState.current = iteration;
+        
+        if (isStopped) Stop();
     };
     const FastForward = () => {
         Reset(0,0);

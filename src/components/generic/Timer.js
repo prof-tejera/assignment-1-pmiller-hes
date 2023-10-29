@@ -12,6 +12,10 @@ const Timer = (onUpdated, onReset, onTimerElapse, onTick, startSeconds, endSecon
 
 
     const Start = () => {
+        if(_timer.current !== null){
+            return;
+        }
+
         _seconds.current = _seconds.current === -1 ? _startSeconds : _seconds.current;
 
         _timer.current = setInterval(() => {
@@ -37,10 +41,10 @@ const Timer = (onUpdated, onReset, onTimerElapse, onTick, startSeconds, endSecon
     };
 
     // Stop the timer and reset the screen to all zeros.
-    const Reset = (overrideSeconds = null, overrideIteration= null) => {
+    const Reset = (overrideSeconds = null, overrideIteration= null, stop = true) => {
         _seconds.current = overrideSeconds == null ? _originalDuration : overrideSeconds;
     
-        onReset(_seconds.current, overrideIteration == null ? _originalIteraction.current : overrideIteration);
+        onReset(_seconds.current, overrideIteration == null ? _originalIteraction.current : overrideIteration, stop);
     };
 
     // Update the duration state.
@@ -77,7 +81,7 @@ const Timer = (onUpdated, onReset, onTimerElapse, onTick, startSeconds, endSecon
             if (!isNaN(iteration)){
                 if  (iteration >= 0 && iteration <=100) {
                     clockState.current.iteration = parseInt(iteration);  
-                    _originalIteraction.current = clockState.current.iteration;
+                    _originalIteraction.current = parseInt(iteration);
                 }
             }
         }   
